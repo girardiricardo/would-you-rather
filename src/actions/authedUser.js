@@ -13,3 +13,13 @@ export function setLogoffUser() {
     type: SET_LOGOFF_USER
   };
 }
+
+export function handleSetAuthedUser(id) {
+  return (dispatch, getState) => {
+    const { users } = getState();
+
+    const user = Object.values(users).find((u) => u.id === id);
+
+    dispatch(setAuthedUser(user));
+  };
+}
