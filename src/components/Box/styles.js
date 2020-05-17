@@ -26,4 +26,32 @@ export const Container = styled.div`
     background-color: ${({ theme }) => theme.purple} !important;
     color: ${({ theme }) => theme.white} !important;
   }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+
+    > li {
+      margin: 0 1.2rem;
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  a {
+    font-size: 16px;
+    text-decoration: none;
+    color: ${({ theme }) => theme.white} !important;
+
+    &:hover {
+      color: ${({ theme }) => theme.green} !important;
+    }
+  }
+
+  .active {
+    color: ${({ theme }) => theme.green} !important;
+  }
 `;
