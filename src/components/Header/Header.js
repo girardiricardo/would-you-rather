@@ -1,13 +1,23 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { NavLink, useHistory } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { setLogoffUser } from '../../actions/authedUser';
 
 import { Container } from './styles';
 
 import Box from '../Box';
 
 const Header = () => {
+  const dispatch = useDispatch();
+  const history = useHistory();
   const user = useSelector((state) => state.authedUser);
+
+  const handleLogout = () => {
+    dispatch(setLogoffUser());
+
+    history.push('/');
+  };
 
   return (
     <Container>
@@ -34,10 +44,8 @@ const Header = () => {
               alt={`${user.name} avatar`}
             />
           </li>
-          <li>
-            <NavLink to="/logout" className="active">
-              Logout
-            </NavLink>
+          <li onClick={handleLogout} className="active">
+            Logout
           </li>
         </ul>
       </Box>
