@@ -12,13 +12,21 @@ function Questions() {
   const questions = useSelector((state) => state.questions);
   const user = useSelector((state) => state.authedUser);
 
-  let unanswered = Object.values(questions).filter(
-    (question) =>
-      !Object.keys(user.answers).find((answers) => answers === question.id)
-  );
-  let answered = Object.values(questions).filter((question) =>
-    Object.keys(user.answers).find((answers) => answers === question.id)
-  );
+  let unanswered =
+    (user.answers &&
+      Object.values(questions).filter(
+        (question) =>
+          !Object.keys(user.answers).find((answers) => answers === question.id)
+      )) ||
+    Object.values(questions);
+  let answered =
+    (user.answers &&
+      Object.values(questions).filter(
+        (question) =>
+          user.answers &&
+          Object.keys(user.answers).find((answers) => answers === question.id)
+      )) ||
+    [];
 
   return (
     <Container>

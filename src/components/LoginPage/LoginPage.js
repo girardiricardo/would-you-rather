@@ -7,7 +7,7 @@ import { Container } from './styles';
 
 import Box from '../Box';
 
-const LoginPage = () => {
+const LoginPage = ({ history }) => {
   const dispatch = useDispatch();
   const users = useSelector((state) => state.users);
   const [user, setUser] = useState(null);
@@ -18,6 +18,12 @@ const LoginPage = () => {
     value: u.id,
     image: { avatar: true, src: u.avatarURL }
   }));
+
+  const handleSubmitUser = () => {
+    dispatch(handleSetAuthedUser(user));
+
+    history.push('/');
+  };
 
   return (
     <Container>
@@ -34,12 +40,7 @@ const LoginPage = () => {
           onChange={(_, { value }) => setUser(value)}
         />
 
-        <Button
-          type="button"
-          fluid
-          onClick={() => dispatch(handleSetAuthedUser(user))}
-          disabled={!user}
-        >
+        <Button type="button" fluid onClick={handleSubmitUser} disabled={!user}>
           Sign in
         </Button>
       </Box>
