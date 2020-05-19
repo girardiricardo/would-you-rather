@@ -19,8 +19,6 @@ const LeaderBoard = () => {
     }))
     .sort((a, b) => (a.score > b.score ? -1 : 1));
 
-  console.log(ranking);
-
   return (
     <Container>
       {ranking.map((value) => (

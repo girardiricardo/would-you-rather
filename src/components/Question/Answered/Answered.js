@@ -13,9 +13,6 @@ const Answered = ({ id }) => {
   const votes =
     question.optionOne.votes.length + question.optionTwo.votes.length;
 
-  console.log(vote);
-  console.log(question);
-
   return (
     <Container>
       <Box>

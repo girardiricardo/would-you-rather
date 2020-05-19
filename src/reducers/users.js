@@ -1,8 +1,6 @@
 import { SET_USERS, UPDATE_USER_ANSWERS } from '../actions/users';
 
 export default function users(state = null, action) {
-  console.log('Action', action);
-
   switch (action.type) {
     case SET_USERS:
       return action.payload;
