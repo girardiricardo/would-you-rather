@@ -28,6 +28,9 @@ function Questions() {
       )) ||
     [];
 
+  unanswered.sort((a, b) => (a.timestamp > b.timestamp) ? -1 : 1);
+  answered.sort((a, b) => (a.timestamp > b.timestamp) ? -1 : 1);
+
   return (
     <Container>
       <Box>
