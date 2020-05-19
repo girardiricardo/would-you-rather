@@ -1,16 +1,33 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Button, Radio } from 'semantic-ui-react';
+import { useHistory } from 'react-router-dom';
+
+import { handleVoteQuestion } from '../../../actions/questions';
+import { handleUpdateUserAnswers } from '../../../actions/users';
+import { updateAnswers } from '../../../actions/authedUser';
 
 import { Container, Content } from './styles';
 
 import Box from '../../Box';
 
 const Unanswered = ({ id }) => {
+  const history = useHistory();
+  const dispatch = useDispatch();
   const question = useSelector((state) => state.questions[id]);
   const author = useSelector((state) => state.users[question.author]);
 
   const [option, setOption] = useState(null);
+
+  const handleSubmitVote = async (e) => {
+    e.preventDefault();
+
+    dispatch(handleVoteQuestion(id, option));
+    dispatch(handleUpdateUserAnswers(id, option));
+    dispatch(updateAnswers({ id, option }));
+
+    history.push('/');
+  };
 
   return (
     <Container>
@@ -36,7 +53,12 @@ const Unanswered = ({ id }) => {
           </div>
           <img src={author.avatarURL} alt={`${author.name} avatar`} />
         </Content>
-        <Button fluid type="button" disabled={!option}>
+        <Button
+          fluid
+          type="button"
+          disabled={!option}
+          onClick={handleSubmitVote}
+        >
           Vote
         </Button>
       </Box>

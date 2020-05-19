@@ -1,5 +1,6 @@
 export const SET_AUTHED_USER = 'SET_AUTHED_USER';
 export const SET_LOGOFF_USER = 'SET_LOGOFF_USER';
+export const UPDATE_ANSWERS = 'UPDATE_ANSWERS';
 
 export function setAuthedUser(payload) {
   return {
@@ -11,6 +12,13 @@ export function setAuthedUser(payload) {
 export function setLogoffUser() {
   return {
     type: SET_LOGOFF_USER
+  };
+}
+
+export function updateAnswers(payload) {
+  return {
+    type: UPDATE_ANSWERS,
+    payload
   };
 }
 

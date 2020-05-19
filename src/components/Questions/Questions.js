@@ -48,9 +48,9 @@ function Questions() {
           </Button>
         </Header>
         {tab === 'unanswered' &&
-          unanswered.map((question) => <QuestionCard question={question} />)}
+          unanswered.map((question, key) => <QuestionCard key={key} question={question} />)}
         {tab === 'answered' &&
-          answered.map((question) => <QuestionCard question={question} />)}
+          answered.map((question, key) => <QuestionCard key={key} question={question} />)}
       </Box>
     </Container>
   );
