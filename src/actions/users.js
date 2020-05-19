@@ -1,5 +1,6 @@
 export const SET_USERS = 'SET_USERS';
 export const UPDATE_USER_ANSWERS = 'UPDATE_USER_ANSWERS';
+export const UPDATE_USER_QUESTIONS = 'UPDATE_USER_QUESTIONS';
 
 export function setUsers(payload) {
   return {
@@ -11,6 +12,13 @@ export function setUsers(payload) {
 export function updateUserAnswers(payload) {
   return {
     type: UPDATE_USER_ANSWERS,
+    payload
+  };
+}
+
+export function updateUserQuestions(payload) {
+  return {
+    type: UPDATE_USER_QUESTIONS,
     payload
   };
 }

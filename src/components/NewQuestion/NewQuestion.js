@@ -1,13 +1,27 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { Input, Button } from 'semantic-ui-react';
+
+import { handleAddQuestion } from '../../actions/shared';
 
 import { Container } from './styles';
 
 import Box from '../Box';
 
 const NewQuestion = () => {
-  const [optionOne, setOptionOne] = useState(null);
-  const [optionTwo, setOptionTwo] = useState(null);
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const [optionOne, setOptionOne] = useState('');
+  const [optionTwo, setOptionTwo] = useState('');
+
+  const handleCreateQuestion = (e) => {
+    e.preventDefault();
+
+    dispatch(handleAddQuestion(optionOne.toLowerCase(), optionTwo.toLowerCase()));
+
+    history.push('/');
+  }
 
   return (
     <Container>
@@ -18,7 +32,7 @@ const NewQuestion = () => {
 
         <h4>Would you rather...</h4>
 
-        <form>
+        <form onSubmit={handleCreateQuestion}>
           <Input
             placeholder="Option one"
             value={optionOne}

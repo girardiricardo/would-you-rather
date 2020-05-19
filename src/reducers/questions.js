@@ -1,4 +1,4 @@
-import { SET_QUESTIONS, VOTE_QUESTION } from '../actions/questions';
+import { SET_QUESTIONS, VOTE_QUESTION, ADD_QUESTION } from '../actions/questions';
 
 export default function questions(state = null, action) {
   switch (action.type) {
@@ -14,6 +14,12 @@ export default function questions(state = null, action) {
             votes: state[action.payload.id][action.payload.option].votes.concat([action.payload.authedUser])
           }
         }
+      }
+
+    case ADD_QUESTION:
+      return {
+        ...state,
+        [action.payload.id]: action.payload
       }
     default:
       return state;

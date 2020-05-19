@@ -2,6 +2,7 @@ import { saveQuestionAnswer } from '../utils/api';
 
 export const SET_QUESTIONS = 'SET_QUESTIONS';
 export const VOTE_QUESTION = 'VOTE_QUESTION';
+export const ADD_QUESTION = 'ADD_QUESTION';
 
 export function setQuestions(payload) {
   return {
@@ -13,6 +14,13 @@ export function setQuestions(payload) {
 export function voteQuestion(payload) {
   return {
     type: VOTE_QUESTION,
+    payload
+  };
+}
+
+export function addQuestion(payload) {
+  return {
+    type: ADD_QUESTION,
     payload
   };
 }

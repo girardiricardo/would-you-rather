@@ -21,7 +21,7 @@ const Vote = ({ option, vote, votes }) => {
       <Progress
         value={optionVotes}
         total={votes}
-        progress="percent"
+        progress="ratio"
         size="large"
       >
         {optionVotes} of {votes}
