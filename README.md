@@ -6,4 +6,6 @@ To get started:
 
 - install all project dependencies with `npm install`
 
-- start the development server with `npm start`
+* start the development server with `npm start`
+
+Avatar images obtained from [http://avatars.adorable.io/](http://avatars.adorable.io/)
